@@ -20,7 +20,6 @@ export const feed = createSlice({
     },
 
     oneSpace: (state, action) => {
-      // state.spaces = [...state.spaces, ...action.payload];
       state.spaceDetails = action.payload;
       state.loading = false;
     },
