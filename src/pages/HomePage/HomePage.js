@@ -3,7 +3,7 @@ import HeroBanner from "../../components/HeroBanner";
 import SpaceCard from "../../components/SpaceCard";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { selectAllSpaces } from "../../store/space/selector";
+import { selectAllSpaces } from "../../store/space/selectors";
 import { fetchSpaces } from "../../store/space/thunk";
 
 export default function HomePage() {
@@ -19,7 +19,7 @@ export default function HomePage() {
   return (
     <div>
       <HeroBanner>
-        <h1>Spaces</h1>
+        <h1>Home</h1>
       </HeroBanner>
       <ul>
         {spaces.map((space) => {
