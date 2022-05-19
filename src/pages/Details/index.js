@@ -9,7 +9,6 @@ export default function SpaceDetails() {
   const { id } = useParams();
   const space = useSelector(selectOneSpace);
   const dispatch = useDispatch();
-  console.log("space", space);
 
   useEffect(() => {
     dispatch(fetchDetailsSpace(id));
@@ -23,7 +22,7 @@ export default function SpaceDetails() {
             <div key={story.id}>
               <StoryCard
                 name={story.name}
-                imgUrl={story.imgUrl}
+                imageUrl={story.imageUrl}
                 content={story.content}
                 backgroundColor={story.backgroundColor}
                 color={story.color}
