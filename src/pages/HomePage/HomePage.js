@@ -27,6 +27,7 @@ export default function HomePage() {
             <div className="spaceFeed">
               <SpaceCard
                 key={space.id}
+                id={space.id}
                 title={space.title}
                 description={space.description}
                 backgroundColor={space.backgroundColor}

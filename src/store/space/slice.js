@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   loading: false,
   spaces: [],
+  spaceDetails: null,
 };
 
 export const feed = createSlice({
@@ -17,9 +18,15 @@ export const feed = createSlice({
       state.spaces = action.payload;
       state.loading = false;
     },
+
+    oneSpace: (state, action) => {
+      // state.spaces = [...state.spaces, ...action.payload];
+      state.spaceDetails = action.payload;
+      state.loading = false;
+    },
   },
 });
 
-export const { startLoading, spacesFetched } = feed.actions;
+export const { startLoading, spacesFetched, oneSpace } = feed.actions;
 
 export default feed.reducer;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { startLoading, spacesFetched } from "./slice";
+import { startLoading, spacesFetched, oneSpace } from "./slice";
 
 export async function fetchSpaces(dispatch, getState) {
   try {
@@ -20,7 +20,7 @@ export function fetchDetailsSpace(id) {
       const response = await axios.get(`http://localhost:4000/space/${id}`);
       console.log("response details", response);
       const details = response.data;
-      dispatch(spacesFetched(details));
+      dispatch(oneSpace(details));
     } catch (error) {
       console.log(error.message);
     }

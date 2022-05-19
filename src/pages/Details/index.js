@@ -1,25 +1,39 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllSpaces } from "../../store/space/selectors";
+import { selectOneSpace } from "../../store/space/selectors";
 import { useParams } from "react-router-dom";
 import { fetchDetailsSpace } from "../../store/space/thunk";
 import { useEffect } from "react";
+import StoryCard from "../../components/storyCard";
 
-const Details = () => {
+export default function SpaceDetails() {
+  const { id } = useParams();
+  const space = useSelector(selectOneSpace);
   const dispatch = useDispatch();
-  const routeParams = useParams();
-  const spaces = useSelector(selectAllSpaces);
+  console.log("space", space);
 
   useEffect(() => {
-    dispatch(fetchDetailsSpace(routeParams.id));
-  }, [dispatch]);
+    dispatch(fetchDetailsSpace(id));
+  }, [dispatch, id]);
 
   return (
     <div>
-      <h2>Details</h2>
-      <p>ID: {routeParams.id}</p>
-      <h2>Title: {spaces.title}</h2>
+      {space ? (
+        <div>
+          {space.stories.map((story) => (
+            <div key={story.id}>
+              <StoryCard
+                name={story.name}
+                imgUrl={story.imgUrl}
+                content={story.content}
+                backgroundColor={story.backgroundColor}
+                color={story.color}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        "loading"
+      )}
     </div>
   );
-};
-
-export default Details;
+}
